@@ -9,34 +9,121 @@
     <meta name="apple-mobile-web-app-title" content="TimeIn" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
-    <link rel="stylesheet" href="~/stylesheets/add2home/add2home.css" />
-    <link rel="stylesheet" href="~/stylesheets/iscroll/jquery.mobile.iscrollview.css" />
-    <link rel="stylesheet" href="~/stylesheets/iscroll/jquery.mobile.iscrollview-pull.css" />            
+    <link rel="stylesheet" href="/stylesheets/add2home/add2home.css" />
+    <link rel="stylesheet" href="/stylesheets/iscroll/jquery.mobile.iscrollview.css" />
+    <link rel="stylesheet" href="/stylesheets/iscroll/jquery.mobile.iscrollview-pull.css" />            
     
     <!--todo find out about // http/https from blogpost-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.js"></script>    
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.3.1/jquery.mobile.js"></script>    
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.3/angular.js"></script>    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.3.1/jquery.mobile.js"></script>    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.3/angular.js"></script>    
     
-    <script src="~/javascripts/lib/angularmobileadapter/jquery-mobile-angular-adapter.js"></script>    
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/amplifyjs/1.1.0/amplify.js"></script>
-    <script src="~/javascripts/lib/add2home/add2home.js"></script>   
+    <script src="/javascripts/lib/angularmobileadapter/jquery-mobile-angular-adapter.js"></script>    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/amplifyjs/1.1.0/amplify.js"></script>
+    <script src="/javascripts/lib/add2home/add2home.js"></script>   
     <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.js"></script>       
-    <script src="~/javascripts/lib/iscroll/iscroll.js"></script>   
-    <script src="~/javascripts/lib/iscroll/jquery.mobile.iscrollview.js"></script>           
-    <script src="~/javascripts/controllers/timeCtrl.js"></script>
+    <script src="/javascripts/lib/iscroll/iscroll.js"></script>   
+    <script src="/javascripts/lib/iscroll/jquery.mobile.iscrollview.js"></script>       
+    
+    <script src="/javascripts/views/mainpage.js"></script>    
+    <script src="/javascripts/controllers/timeCtrl.js"></script>
         
 </head>
     <body>        
-       
-        @RenderBody()                        
-        <script>
-            $(document).on("mobileinit", function () {
-                $.mobile.ajaxEnabled = false;
-            });
-        </script>        
-        @RenderSection("scripts", required: false)
+       <div data-role="page" data-theme="c" id="mainPage" ng-controller="TimeCtrl">
+    <div data-role="content">
+        <h3 id="timerDisplay" style="text-align: center">{{getDuration() }}</h3>
+        <h3 style="text-align: center" ng-model="selectedTask">{{getSelectedTask()}}</h3>
+        <form>
+            <textarea cols="40" rows="5" style="height: 10%;" name="timenote" id="timenote"></textarea>
+            <div class="ui-grid-a">
+                <div class="ui-block-a">
+                    <a href="#" id="Clock" data-role="button" ng-click="startClock()">
+                        <img src="/images/11-clock.png"><br />
+                        <span style="font-size: 0.6em;">Start</span></a>
+                </div>
+                <div class="ui-block-b">
+                    <a href="#" id="startPhone" data-role="button" ng-click="stopClock()">
+                        <img src="/images/11-clock.png"><br />
+                        <span style="font-size: 0.6em;">Stop</span></a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div data-role="footer" data-position="fixed" style="text-align: center">
+        <div class="ui-icon-alt">
+            <fieldset class="ui-grid-b" data-theme="c">
+                <div class="ui-block-a"><a href="#setting-panel" data-role="button" data-icon="plus" data-iconpos="notext" data-inline="true" data-theme="c">Menu</a></div>
+                <div class="ui-block-b"><a href="#" id="stopClock" data-role="button" data-icon="home" data-iconpos="notext" data-inline="true" data-theme="c">Stop</a></div>
+                <div class="ui-block-b"><a href="#annexPage" id="annex" data-role="button" data-icon="check" data-iconpos="notext" data-inline="true" data-transition="flip" data-theme="c">Annex</a></div>
+            </fieldset>
+        </div>
+    </div>
+    <!-- Settings panel-->
+    <div data-role="panel" data-display="reveal" id="setting-panel" data-position="left" data-theme="c">
+        <ul>
+            <li><a href="#" data-role="button" style="text-align: center">
+                <img src="/images/187-pencil.png">
+                Add Entry                        
+            </a></li>
+            <li>
+                <a href="#" data-role="button">
+                    <img src="/images/17-bar-chart.png">
+                    Overview                        
+                </a>
+            </li>
+            <li>
+                <a href="#" data-role="button">
+                    <img src="/images/82-dog-paw.png">
+                    Profile                        
+                </a>
+            </li>
+            <li>
+                <a href="#" data-role="button">
+                    <img src="/images/157-wrench.png">
+                    Settings                        
+                </a>
+            </li>
+        </ul>
+        <br />
+        <br />
+        <p style="text-align: center">
+            <strong>Time & Invoice</strong><br />
+            <small>Version 0.01</small>
+        </p>
+    </div>
+    <!-- Task panel -->
+    <div id="task-panel" data-role="panel" data-display="reveal" data-position="right" ng-init="initTask()">
+        <input type="search" name="taskserach" id="tashsearch" value="" placeholder="Placeholder text..." class="ui-icon-alt">
+        <div id="task-list" data-iscroll>
+            <div class="iscroll-pulldown">
+                <span class="iscroll-pull-icon"></span><span class="iscroll-pull-label"></span>
+            </div>
+            <ul data-role="listview" class="ui-icon-alt">
+                <li ng-repeat="task in tasks" data-icon="check">
+                    <a href="#" data-inline="true" ng-click="selectTask(task)">
+                        <h3>{{task.Name}}</h3>
+                        <p>{{task.Description}}</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">    
+    $(document).on("mobileinit", function () {
+
+        $.mobile.ajaxEnabled = false;
+        
+        if (!Modernizr.localstorage) {
+            alert("local storage not available in this browser, your phone is too old");
+            return;
+        }
+    });
+    
+</script>                                                                
     </body>
 </html>
 
