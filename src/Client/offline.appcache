@@ -1,0 +1,42 @@
+﻿CACHE MANIFEST
+# 2013-04-16:v1
+#http://www.html5rocks.com/en/tutorials/appcache/beginner/
+
+# Explicitly cached entries
+#pages
+index.html
+#styles
+//code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
+stylesheets/add2home/add2home.css" />
+stylesheets/iscroll/jquery.mobile.iscrollview.css" />
+stylesheets/iscroll/jquery.mobile.iscrollview-pull.css" />
+#scripts
+//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.js"></script>    
+//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+//cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.3.1/jquery.mobile.js"></script>   
+//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.3/angular.js"></script>    
+
+javascripts/lib/angularmobileadapter/jquery-mobile-angular-adapter.js"></script>  
+//cdnjs.cloudflare.com/ajax/libs/amplifyjs/1.1.0/amplify.js"></script>
+javascripts/lib/add2home/add2home.js"></script>   
+//cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.js"></script>       
+javascripts/lib/iscroll/iscroll.js"></script>   
+javascripts/lib/iscroll/jquery.mobile.iscrollview.js"></script>       
+
+javascripts/views/mainpage.js"></script>    
+javascripts/controllers/timeCtrl.js"></script>
+            
+#FALLBACK:
+#/ /offline.html
+
+# All other resources (e.g. sites) require the user to be online. 
+#NETWORK:
+#*
+
+# Additional resources to cache
+#CACHE:
+images/11-clock.png
+images/157-wrench.png
+images/17-bar-chart.png
+images/187-pencil.png
+images/82-dog-paw.png
