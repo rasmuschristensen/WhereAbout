@@ -79,7 +79,7 @@
     <Content Include="stylesheets\jquerymobile\jquery.mobile.structure-1.2.0.min.css" />
     <Content Include="stylesheets\jquerymobile\jquery.mobile.theme-1.2.0.css" />
     <Content Include="stylesheets\jquerymobile\jquery.mobile.theme-1.2.0.min.css" />
-    <Content Include="Views\index.html" />
+    <Content Include="index.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -93,7 +93,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
