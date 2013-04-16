@@ -57,6 +57,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\11-clock.png" />
+    <Content Include="images\157-wrench.png" />
+    <Content Include="images\17-bar-chart.png" />
+    <Content Include="images\187-pencil.png" />
+    <Content Include="images\82-dog-paw.png" />
     <Content Include="javascripts\controllers\timeCtrl.js" />
     <Content Include="javascripts\lib\add2home\add2home.js" />
     <Content Include="javascripts\lib\angularmobileadapter\jquery-mobile-angular-adapter.js" />
