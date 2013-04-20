@@ -35,4 +35,8 @@ $(document).on("pageinit", "#mainPage", function () {
     $(document).on("iscroll_onpulldown", ".iscroll-wrapper", function (event, data) {
         onPullDown(event, data);
     });
+
+    $(window).on("orientationchange", function(e) {
+        $.mobile.changePage("#overviewPage", { transition: "fade" });
+    });
 });

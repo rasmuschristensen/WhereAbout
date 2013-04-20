@@ -31,86 +31,92 @@
         
 </head>
     <body>        
-       <div data-role="page" data-theme="c" id="mainPage" ng-controller="TimeCtrl">
-    <div data-role="content">
-        <h3 id="timerDisplay" style="text-align: center">{{getDuration() }}</h3>
-        <h3 style="text-align: center" ng-model="selectedTask">{{getSelectedTask()}}</h3>
-        <form>
-            <textarea cols="40" rows="5" style="height: 10%;" name="timenote" id="timenote"></textarea>
-            <div class="ui-grid-a">
-                <div class="ui-block-a">
-                    <a href="#" id="Clock" data-role="button" ng-click="startClock()">
-                        <img src="/images/11-clock.png"><br />
-                        <span style="font-size: 0.6em;">Start</span></a>
-                </div>
-                <div class="ui-block-b">
-                    <a href="#" id="startPhone" data-role="button" ng-click="stopClock()">
-                        <img src="/images/11-clock.png"><br />
-                        <span style="font-size: 0.6em;">Stop</span></a>
+        <div data-role="page" data-theme="c" id="mainPage" ng-controller="TimeCtrl">
+            <div data-role="content">
+                <h3 id="timerDisplay" style="text-align: center">{{getDuration() }}</h3>
+                <h3 style="text-align: center" ng-model="selectedTask">{{getSelectedTask()}}</h3>
+                <form>
+                    <textarea cols="40" rows="5" style="height: 10%;" name="timenote" id="timenote"></textarea>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <a href="#" id="Clock" data-role="button" ng-click="startClock()">
+                                <img src="/images/11-clock.png"><br />
+                                <span style="font-size: 0.6em;">Start</span></a>
+                        </div>
+                        <div class="ui-block-b">
+                            <a href="#" id="startPhone" data-role="button" ng-click="stopClock()">
+                                <img src="/images/11-clock.png"><br />
+                                <span style="font-size: 0.6em;">Stop</span></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div data-role="footer" data-position="fixed" style="text-align: center">
+                <div class="ui-icon-alt">
+                    <fieldset class="ui-grid-b" data-theme="c">
+                        <div class="ui-block-a"><a href="#setting-panel" data-role="button" data-icon="plus" data-iconpos="notext" data-inline="true" data-theme="c">Menu</a></div>
+                        <div class="ui-block-b"><a href="#" id="stopClock" data-role="button" data-icon="home" data-iconpos="notext" data-inline="true" data-theme="c">Stop</a></div>
+                        <div class="ui-block-b"><a href="#annexPage" id="annex" data-role="button" data-icon="check" data-iconpos="notext" data-inline="true" data-transition="flip" data-theme="c">Annex</a></div>
+                    </fieldset>
                 </div>
             </div>
-        </form>
-    </div>
-    <div data-role="footer" data-position="fixed" style="text-align: center">
-        <div class="ui-icon-alt">
-            <fieldset class="ui-grid-b" data-theme="c">
-                <div class="ui-block-a"><a href="#setting-panel" data-role="button" data-icon="plus" data-iconpos="notext" data-inline="true" data-theme="c">Menu</a></div>
-                <div class="ui-block-b"><a href="#" id="stopClock" data-role="button" data-icon="home" data-iconpos="notext" data-inline="true" data-theme="c">Stop</a></div>
-                <div class="ui-block-b"><a href="#annexPage" id="annex" data-role="button" data-icon="check" data-iconpos="notext" data-inline="true" data-transition="flip" data-theme="c">Annex</a></div>
-            </fieldset>
-        </div>
-    </div>
-    <!-- Settings panel-->
-    <div data-role="panel" data-display="reveal" id="setting-panel" data-position="left" data-theme="c">
-        <ul>
-            <li><a href="#" data-role="button" style="text-align: center">
-                <img src="/images/187-pencil.png">
-                Add Entry                        
-            </a></li>
-            <li>
-                <a href="#" data-role="button">
-                    <img src="/images/17-bar-chart.png">
-                    Overview                        
-                </a>
-            </li>
-            <li>
-                <a href="#" data-role="button">
-                    <img src="/images/82-dog-paw.png">
-                    Profile                        
-                </a>
-            </li>
-            <li>
-                <a href="#" data-role="button">
-                    <img src="/images/157-wrench.png">
-                    Settings                        
-                </a>
-            </li>
-        </ul>
-        <br />
-        <br />
-        <p style="text-align: center">
-            <strong>Time & Invoice</strong><br />
-            <small>Version 0.01</small>
-        </p>
-    </div>
-    <!-- Task panel -->
-    <div id="task-panel" data-role="panel" data-display="reveal" data-position="right" ng-init="initTask()">
-        <input type="search" name="taskserach" id="tashsearch" value="" placeholder="Placeholder text..." class="ui-icon-alt">
-        <div id="task-list" data-iscroll>
-            <div class="iscroll-pulldown">
-                <span class="iscroll-pull-icon"></span><span class="iscroll-pull-label"></span>
+            <!-- Settings panel-->
+            <div data-role="panel" data-display="reveal" id="setting-panel" data-position="left" data-theme="c">
+                <ul>
+                    <li><a href="#" data-role="button" style="text-align: center">
+                            <img src="/images/187-pencil.png">
+                            Add Entry                        
+                        </a></li>
+                    <li>
+                        <a href="#" data-role="button">
+                            <img src="/images/17-bar-chart.png">
+                            Overview                        
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-role="button">
+                            <img src="/images/82-dog-paw.png">
+                            Profile                        
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-role="button">
+                            <img src="/images/157-wrench.png">
+                            Settings                        
+                        </a>
+                    </li>
+                </ul>
+                <br />
+                <br />
+                <p style="text-align: center">
+                    <strong>Time & Invoice</strong><br />
+                    <small>Version 0.01</small>
+                </p>
             </div>
-            <ul data-role="listview" class="ui-icon-alt">
-                <li ng-repeat="task in tasks" data-icon="check">
-                    <a href="#" data-inline="true" ng-click="selectTask(task)">
-                        <h3>{{task.Name}}</h3>
-                        <p>{{task.Description}}</p>
-                    </a>
-                </li>
-            </ul>
+            <!-- Task panel -->
+            <div id="task-panel" data-role="panel" data-display="reveal" data-position="right" ng-init="initTask()">
+                <input type="search" name="taskserach" id="tashsearch" value="" placeholder="Placeholder text..." class="ui-icon-alt">
+                <div id="task-list" data-iscroll>
+                    <div class="iscroll-pulldown">
+                        <span class="iscroll-pull-icon"></span><span class="iscroll-pull-label"></span>
+                    </div>
+                    <ul data-role="listview" class="ui-icon-alt">
+                        <li ng-repeat="task in tasks" data-icon="check">
+                            <a href="#" data-inline="true" ng-click="selectTask(task)">
+                                <h3>{{task.Name}}</h3>
+                                <p>{{task.Description}}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
-    </div>
-</div>
+        <div data-role="page" data-theme="c" id="overviewPage" >
+            <div data-role="content">
+                <h1>overview page</h1>
+            </div>
+        </div>
 
 <script type="text/javascript">    
     $(document).on("mobileinit", function () {
