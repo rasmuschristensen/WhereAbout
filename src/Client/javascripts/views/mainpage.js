@@ -36,7 +36,8 @@ $(document).on("pageinit", "#mainPage", function () {
         onPullDown(event, data);
     });
 
-    $(window).on("orientationchange", function(e) {
+    $(window).on("orientationchange", function (e) {
+        alert('baaam change');
         $.mobile.changePage("#overviewPage", { transition: "fade" });
     });
 });
