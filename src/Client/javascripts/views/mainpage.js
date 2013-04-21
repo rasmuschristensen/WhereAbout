@@ -37,7 +37,6 @@ $(document).on("pageinit", "#mainPage", function () {
     });
 
     $(window).on("orientationchange", function (e) {
-        alert('baaam change');
         $.mobile.changePage("#overviewPage", { transition: "fade" });
     });
 });
