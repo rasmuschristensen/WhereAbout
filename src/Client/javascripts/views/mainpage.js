@@ -37,7 +37,10 @@ $(document).on("pageinit", "#mainPage", function () {
     });
 
     $(window).on("orientationchange", function (e) {
-        alert('baaam change');
-        $.mobile.changePage("#overviewPage", { transition: "fade" });
+        if(e.orientation == "landscape") {
+            $.mobile.changePage("#overviewPage", { transition: "fade" });
+        } else {
+            $.mobile.changePage("#mainPage", { transition: "fade" });
+        }
     });
 });
