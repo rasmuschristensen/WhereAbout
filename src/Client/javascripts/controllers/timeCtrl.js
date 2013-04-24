@@ -23,37 +23,43 @@
     };
 
     $scope.initTask = function() {
-        $http.get('/Time/Tasks').success(function (data) {
-            $scope.tasks = data;
-        });
+        //$http.get('/Time/Tasks').success(function (data) {
+        //    $scope.tasks = data;
+        //});
     };
     
     $scope.startClock = function () {        
-        var now = Date.now();
-        var cur = amplify.store.localStorage("current");
+        var now = new Date();
+        //var now = Date.now();
+        var current = amplify.store.localStorage("current");
 
         //we have a start entry we need to stop
-        if (cur != null && cur.key != null) {
-
-            //get the entry
-            var lookup = 'start_' + cur.key;
-            var entry = amplify.store.localStorage(lookup);
+        if (current != null/* && cur.Start != null*/) {            
             //update stoptime and save it back
-            entry.stop = now;
-            amplify.store.localStorage(lookup, entry);
+            current.Stop = now;
+            //get the day to persist this registration in
+            var registrationDay = amplify.store.localStorage(current.Key);
+            registrationDay.Registrations.push(current);
+            amplify.store.localStorage(current.Key, registrationDay);
         }
 
-        //We have a new current entry
-        amplify.store.localStorage("current",
-                                { key: now });
-
-        var task;
-        if ($scope.selectedTask == null) {
-            $scope.selectedTask = new Task("unnamed task", -1);
+        //We have a new current entry        
+        var registration = new Registration(now);
+        amplify.store.localStorage("current", registration);
+        //add day if it does not exists
+        var day = amplify.store.localStorage(registration.Key);
+        if (day == null) {
+            day = new Day(now);
+            amplify.store.localStorage(registration.Key, day);
         }
+
+
+        //if ($scope.selectedTask == null) {
+        //    $scope.selectedTask = new Task("unnamed task", -1);
+        //}
         //And a new startentry
-        amplify.store.localStorage('start_' + now,
-                                { start: now, stop: "", notes: "", task: $scope.selectedTask });
+        //amplify.store.localStorage('start_' + now,
+        //                        { start: now, stop: "", notes: "", task: $scope.selectedTask });
         startTimer();
     };
     
@@ -61,53 +67,37 @@
         $timeout.cancel(timerProm);
         
         var now = Date.now();
-        var cur = amplify.store.localStorage("current");
+        var currentRegistration = amplify.store.localStorage("current");
 
         //we have a start entry we need to stop
-        if (cur != null && cur.key != null) {
+        if (currentRegistration != null) {
 
             //get the entry
-            var lookup = 'start_' + cur.key;
-            var entry = amplify.store.localStorage(lookup);
-            //update stoptime and save it back
-            entry.stop = now;
-            amplify.store.localStorage(lookup, entry);
             
-            //We have a new current entry
-            amplify.store.localStorage("current",
-                                    { key: null });
-
+            //update stoptime and save it back
+            currentRegistration.Stop = now;
+            var day = amplify.store.localStorage(currentRegistration.Key);
+            day.Registrations.push(currentRegistration);
+            amplify.store.localStorage(currentRegistration.Key, day);
+                                    
             $scope.duration = '00:00:00';
-        }
-        
-        //read all registrations This is not an array but an object!!!
-        var registrations = amplify.store();
 
-        //get all registrations for today only.
-        //first remove current entry
-        registrations.shift();
+            amplify.store.localStorage("current", null);
+            //test
+            //read all registrations This is not an array but an object!!!
+            var registrationDay = amplify.store.localStorage(currentRegistration.Key);
 
-        //second find all registrations for today
-        var today = Date();
-        var todaysRegistrations = _.filter(registrations, function (registration) {
-            return Date(registration.start).month == today.month &&
-                Date(registration.start).getDay == today.day;
-        });
-
-
-        var totalTime = _.reduce(todaysRegistrations, function (x, item) {
-            x + (Date(item.stop) - Date(item.start))
-        }, 0);
-
-        var total = momentum.duration(totalTime, 'milliseconds');
-        console.log(total.seconds());
-    };
-    
-    function Task(name, id) {
-        this.Name = name;
-        this.Id = id;
-        this.Description = "";
-    }
+            var mils = _.map(registrationDay.Registrations, function (reg) {
+                return new Date(reg.Stop).getTime() - new Date(reg.Start).getTime();
+            });
+            
+            var totalTime = _.reduce(mils, function(memo, it) {
+                return memo + it;
+            },0);
+            
+            console.log(totalTime / 1000);
+        }                        
+    };        
 
     function startTimer() {
         timerProm = $timeout(updateTimer, 1000);
@@ -115,7 +105,8 @@
     }
     
     function updateTimer() {
-        var timeElapsed = Date.now() - current.key;
+        //var timeElapsed = Date.now() - current.key;
+        var timeElapsed = Date.now() - current.Start;
 
         var hours = moment.duration(timeElapsed, 'milliseconds').hours();
         var minutes = moment.duration(timeElapsed, 'milliseconds').minutes();

@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
-<html lang="en" manifest="/offline.appcache" ng-app>
+<!--<html lang="en" manifest="/offline.appcache" ng-app>-->
+<html lang="en" ng-app>
 <head>
     <meta charset="utf-8" />
     <title>Day Trace - What Where When</title>
@@ -28,14 +29,16 @@
     <script src="/javascripts/lib/iscroll/jquery.mobile.iscrollview.js"></script>       
     
     <script src="/javascripts/views/mainpage.js"></script>    
+    <script src="/javascripts/views/overview.js"></script>    
     <script src="/javascripts/controllers/timeCtrl.js"></script>
+    <script src="/javascripts/controllers/overviewCtrl.js"></script>
         
 </head>
     <body>        
         <div data-role="page" data-theme="c" id="mainPage" ng-controller="TimeCtrl">
             <div data-role="content">
-                <h3 id="timerDisplay" style="text-align: center">{{getDuration() }}</h3>
-                <h3 style="text-align: center" ng-model="selectedTask">{{getSelectedTask()}}</h3>
+                <h3 id="timerDisplay" style="text-align: center">getDuration() </h3>
+                <h3 style="text-align: center" ng-model="selectedTask">getSelectedTask()</h3>
                 <form>
                     <textarea cols="40" rows="5" style="height: 10%;" name="timenote" id="timenote"></textarea>
                     <div class="ui-grid-a">
@@ -113,11 +116,11 @@
             </div>
 
         </div>
-        <div data-role="page" data-theme="c" id="overviewPage" >
+        <div data-role="page" data-theme="c" id="overviewPage" ng-controller="OverviewCtrl">
             <div data-role="content">
                 <h1>overview page</h1>
             </div>
-            <div id="horizontal-menu" data-role="panel" data-position="right">
+            <div id="overview-menu" data-role="panel" data-position="left">
                 <ul>
                     <li><a href="#" data-role="button" style="text-align: center">
                             <img src="/images/187-pencil.png">

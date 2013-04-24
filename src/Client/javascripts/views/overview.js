@@ -1,25 +1,39 @@
-﻿function OverviewCtrl($scope) {
-    $scope.TotalTime = function () {
-        
-        //read all registrations
-        var registrations = amplify.store();
-        
-        //get all registrations for today only.
-        //first remove current entry
-        registrations.shift();
-        
-        //second find all registrations for today
-        var today = Date();        
-        var todaysRegistrations = _.filter(registrations, function (registration) {
-            return Date(registration.start).month == today.month &&
-                Date(registration.start).getDay == today.day;
-        });
+﻿
+
+$(document).on("pageinit", "#overviewPage", function () {
 
 
-        var totalTime = _.reduce(todaysRegistrations, function (x, item) {
-            x + (Date(item.stop) - Date(item.start))}, 0);
 
-        var total = momentum.duration(totalTime, 'milliseconds');
-        return total.seconds();
-    };
-};
+    /* Open settings or tasklist panel depending on the swipe direction */
+    $(document).on("swipeleft swiperight", "#overviewPage", function (e) {
+        // We check if there is no open panel on the page because otherwise
+        // a swipe to close the left panel would also open the right panel (and v.v.).
+        // We do this by checking the data that the framework stores on the page element (panel: open).
+        if ($.mobile.activePage.jqmData("panel") !== "open") {
+            
+            if (e.type === "swiperight") {
+                $("#overview-menu").panel("open");
+            }
+        }
+    });
+
+    /* Close the task list panel when a task i clicked */
+    $(document).on("click", "#task-list", function (e) {
+        $("#task-panel").panel("close");
+    });
+
+    /* When the tasklist is pulled down we add a hook to refresh its data */
+    $(document).on("iscroll_onpulldown", ".iscroll-wrapper", function (event, data) {
+        onPullDown(event, data);
+    });
+
+    $(window).on("orientationchange", function (e) {
+
+        if (e.orientation == "landscape") {
+            $.mobile.changePage("#overviewPage", { transition: "fade" });
+        } else {
+            $.mobile.changePage("#mainPage", { transition: "fade" });
+        }
+
+    });
+});
