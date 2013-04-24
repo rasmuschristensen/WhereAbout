@@ -1,26 +1,18 @@
 ﻿function OverviewCtrl($scope) {
     $scope.TotalTime = function () {
 
-        //read all registrations
-        var registrations = amplify.store();
+        var day = new Day(new Date());
+        //read all registrations This is not an array but an object!!!
+        var registrationDay = amplify.store.localStorage(day.Id);
 
-        //get all registrations for today only.
-        //first remove current entry
-        registrations.shift();
-
-        //second find all registrations for today
-        var today = Date();
-        var todaysRegistrations = _.filter(registrations, function (registration) {
-            return Date(registration.start).month == today.month &&
-                Date(registration.start).getDay == today.day;
+        var mils = _.map(registrationDay.Registrations, function (reg) {
+            return new Date(reg.Stop).getTime() - new Date(reg.Start).getTime();
         });
 
-
-        var totalTime = _.reduce(todaysRegistrations, function (x, item) {
-            x + (Date(item.stop) - Date(item.start))
+        var totalTime = _.reduce(mils, function (memo, it) {
+            return memo + it;
         }, 0);
 
-        var total = momentum.duration(totalTime, 'milliseconds');
-        return total.seconds();
+        return totalTime / 1000;        
     };
 };

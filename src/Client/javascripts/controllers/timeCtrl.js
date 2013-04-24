@@ -82,20 +82,7 @@
                                     
             $scope.duration = '00:00:00';
 
-            amplify.store.localStorage("current", null);
-            //test
-            //read all registrations This is not an array but an object!!!
-            var registrationDay = amplify.store.localStorage(currentRegistration.Key);
-
-            var mils = _.map(registrationDay.Registrations, function (reg) {
-                return new Date(reg.Stop).getTime() - new Date(reg.Start).getTime();
-            });
-            
-            var totalTime = _.reduce(mils, function(memo, it) {
-                return memo + it;
-            },0);
-            
-            console.log(totalTime / 1000);
+            amplify.store.localStorage("current", null);                        
         }                        
     };        
 

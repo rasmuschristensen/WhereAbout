@@ -7,7 +7,7 @@
 function Day(date) {
     this.Date = date;
     this.Registrations = [];
-    this.Id = date.getFullYear() + '-' + date.getMonth() + '-' + date.getDay();
+    this.Id = date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
 
 }
 

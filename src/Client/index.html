@@ -27,9 +27,10 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.js"></script>       
     <script src="/javascripts/lib/iscroll/iscroll.js"></script>   
     <script src="/javascripts/lib/iscroll/jquery.mobile.iscrollview.js"></script>       
-    
+        
     <script src="/javascripts/views/mainpage.js"></script>    
     <script src="/javascripts/views/overview.js"></script>    
+    <script src="/javascripts/controllers/models.js"></script>    
     <script src="/javascripts/controllers/timeCtrl.js"></script>
     <script src="/javascripts/controllers/overviewCtrl.js"></script>
         
@@ -118,7 +119,7 @@
         </div>
         <div data-role="page" data-theme="c" id="overviewPage" ng-controller="OverviewCtrl">
             <div data-role="content">
-                <h1>overview page</h1>
+                <h1>{{TotalTime()}}</h1>
             </div>
             <div id="overview-menu" data-role="panel" data-position="left">
                 <ul>
