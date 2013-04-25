@@ -29,12 +29,11 @@
     };
     
     $scope.startClock = function () {        
-        var now = new Date();
-        //var now = Date.now();
-        var current = amplify.store.localStorage("current");
+        var now = new Date();        
+        current = amplify.store.localStorage("current");
 
         //we have a start entry we need to stop
-        if (current != null/* && cur.Start != null*/) {            
+        if (current != null) {            
             //update stoptime and save it back
             current.Stop = now;
             //get the day to persist this registration in
@@ -92,8 +91,8 @@
     }
     
     function updateTimer() {
-        //var timeElapsed = Date.now() - current.key;
-        var timeElapsed = Date.now() - current.Start;
+        
+        var timeElapsed = Date.now() - new Date( current.Start);
 
         var hours = moment.duration(timeElapsed, 'milliseconds').hours();
         var minutes = moment.duration(timeElapsed, 'milliseconds').minutes();

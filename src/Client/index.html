@@ -38,7 +38,7 @@
     <body>        
         <div data-role="page" data-theme="c" id="mainPage" ng-controller="TimeCtrl">
             <div data-role="content">
-                <h3 id="timerDisplay" style="text-align: center">getDuration() </h3>
+                <h3 id="timerDisplay" style="text-align: center">{{getDuration()}} </h3>
                 <h3 style="text-align: center" ng-model="selectedTask">getSelectedTask()</h3>
                 <form>
                     <textarea cols="40" rows="5" style="height: 10%;" name="timenote" id="timenote"></textarea>
