@@ -25,15 +25,5 @@ $(document).on("pageinit", "#overviewPage", function () {
     /* When the tasklist is pulled down we add a hook to refresh its data */
     $(document).on("iscroll_onpulldown", ".iscroll-wrapper", function (event, data) {
         onPullDown(event, data);
-    });
-
-    $(window).on("orientationchange", function (e) {
-
-        if (e.orientation == "landscape") {
-            $.mobile.changePage("#overviewPage", { transition: "fade" });
-        } else {
-            $.mobile.changePage("#mainPage", { transition: "fade" });
-        }
-
-    });
+    });    
 });
