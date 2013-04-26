@@ -27,13 +27,13 @@
         //    $scope.tasks = data;
         //});
     };
-    
-    $scope.startClock = function () {        
-        var now = new Date();        
+
+    $scope.startClock = function() {
+        var now = new Date();
         current = amplify.store.localStorage("current");
 
         //we have a start entry we need to stop
-        if (current != null) {            
+        if (current != null) {
             //update stoptime and save it back
             current.Stop = now;
             //get the day to persist this registration in
@@ -42,8 +42,14 @@
             amplify.store.localStorage(current.Key, registrationDay);
         }
 
-        //We have a new current entry        
+        //We have a new current entry          
         var registration = new Registration(now);
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {                
+                registration.LocationFrom = new Location(position.coords.latitude, position.coords.longitude);
+            });
+        }
+
         amplify.store.localStorage("current", registration);
         //add day if it does not exists
         var day = amplify.store.localStorage(registration.Key);
@@ -70,11 +76,16 @@
 
         //we have a start entry we need to stop
         if (currentRegistration != null) {
-
-            //get the entry
+            
             
             //update stoptime and save it back
             currentRegistration.Stop = now;
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    currentRegistration.LocationTo = new Location(position.coords.latitude, position.coords.longitude);
+                });
+            }
+
             var day = amplify.store.localStorage(currentRegistration.Key);
             day.Registrations.push(currentRegistration);
             amplify.store.localStorage(currentRegistration.Key, day);

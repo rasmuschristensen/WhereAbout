@@ -16,4 +16,11 @@ function Registration(start) {
     this.Note = '';
     this.Stop = null;
     this.Key = start.getFullYear() + '-' + start.getMonth() + '-' + start.getDate();
+    this.LocationFrom = null;
+    this.LocationTo = null;
+}
+
+function Location(lat, lon) {
+    this.Latitude = lat;
+    this.Longitude = lon;
 }

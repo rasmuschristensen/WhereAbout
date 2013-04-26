@@ -70,6 +70,7 @@
     <Content Include="javascripts\lib\angularmobileadapter\jquery-mobile-angular-adapter.min.js" />
     <Content Include="javascripts\lib\iscroll\iscroll.js" />
     <Content Include="javascripts\lib\iscroll\jquery.mobile.iscrollview.js" />
+    <Content Include="javascripts\views\mappage.js" />
     <Content Include="javascripts\views\mainpage.js" />
     <Content Include="javascripts\views\overview.js" />
     <Content Include="stylesheets\add2home\add2home.css" />

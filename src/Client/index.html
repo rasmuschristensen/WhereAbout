@@ -27,12 +27,16 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.js"></script>       
     <script src="/javascripts/lib/iscroll/iscroll.js"></script>   
     <script src="/javascripts/lib/iscroll/jquery.mobile.iscrollview.js"></script>               
+    <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyAa9MHi6jA30zVMMpEktQrhaYrM7yF9D20&sensor=false"></script>
         
     <script src="/javascripts/views/mainpage.js"></script>    
     <script src="/javascripts/views/overview.js"></script>    
+    <script src="/javascripts/views/mappage.js"></script>    
     <script src="/javascripts/controllers/models.js"></script>    
     <script src="/javascripts/controllers/timeCtrl.js"></script>
     <script src="/javascripts/controllers/overviewCtrl.js"></script>
+    
+
         
 </head>
     <body>        
@@ -124,6 +128,11 @@
                 <h3>Distance {{TotalDistance()}}</h3>
                 <h3>Receipts {{TotalReceipts()}}</h3>
             </div>            
+        </div>
+        <div data-role="page" id="mapPage">
+            <div data-role="content">
+                <div id="map-canvas" style="height:200px;width:450px;"/>
+            </div>
         </div>
 
 <script type="text/javascript">    
