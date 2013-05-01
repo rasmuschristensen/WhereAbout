@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 <!--<html lang="en" manifest="/offline.appcache" ng-app>-->
-<html lang="en" ng-app>
+<html lang="en" style="height: 100%;" ng-app>
 <head>
     <meta charset="utf-8" />
     <title>Day Trace - What Where When</title>
@@ -39,7 +39,7 @@
 
         
 </head>
-    <body>        
+    <body style="height: 100%;">        
         <div data-role="page" data-theme="c" id="mainPage" ng-controller="TimeCtrl">
             <div data-role="content">
                 <h3 id="timerDisplay" style="text-align: center">{{getDuration()}} </h3>
@@ -121,8 +121,8 @@
             </div>
 
         </div>
-        <div data-role="page" data-theme="c" id="overviewPage" ng-controller="OverviewCtrl">
-            <div data-role="content">
+        <div data-role="page" data-theme="c" id="overviewPage" ng-controller="OverviewCtrl" >
+            <div data-role="content" style="height: 100%">
                 <h1>Todays Total</h1>                
                 <h3>Time {{TotalTime()}}</h3>
                 <h3>Distance {{TotalDistance()}}</h3>
@@ -131,7 +131,8 @@
         </div>
         <div data-role="page" id="mapPage">
             <div data-role="content">
-                <div id="map-canvas" style="height:200px;width:450px;"/>
+                <!--<div id="map-canvas" style="height:200px;width:450px;"/>-->
+                <div id="map-canvas" style="height:100%;width:100%;position: absolute;"/>
             </div>
         </div>
 
