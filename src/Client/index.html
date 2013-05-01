@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 <!--<html lang="en" manifest="/offline.appcache" ng-app>-->
-<html lang="en" style="height: 100%;" ng-app>
+<html lang="en" style="height:100%" ng-app>
 <head>
     <meta charset="utf-8" />
     <title>Day Trace - What Where When</title>
@@ -39,7 +39,7 @@
 
         
 </head>
-    <body style="height: 100%;">        
+    <body style="height:100%">        
         <div data-role="page" data-theme="c" id="mainPage" ng-controller="TimeCtrl">
             <div data-role="content">
                 <h3 id="timerDisplay" style="text-align: center">{{getDuration()}} </h3>
@@ -129,8 +129,8 @@
                 <h3>Receipts {{TotalReceipts()}}</h3>
             </div>            
         </div>
-        <div data-role="page" id="mapPage">
-            <div data-role="content">
+        <div data-role="page" id="mapPage" style="height: 100%;width:100%">
+            <div data-role="content" id="mapcontent" style="height: 100%;width:100%;">
                 <!--<div id="map-canvas" style="height:200px;width:450px;"/>-->
                 <div id="map-canvas" style="height:100%;width:100%;position: absolute;"/>
             </div>
@@ -145,6 +145,8 @@
             alert("local storage not available in this browser, your phone is too old");
             return;
         }
+        
+        
     });
     
 </script>                                                                
