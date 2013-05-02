@@ -100,6 +100,20 @@
         timerProm = $timeout(updateTimer, 1000);
         current = amplify.store.localStorage("current");
     }
+
+
+    $scope.registrations = '';
+    
+    $scope.loadRegistrations = function () {
+        var day = new Day(new Date());
+        var registrationDay = amplify.store.localStorage(day.Id);
+
+        $scope.registrations = registrationDay.Registrations;
+    };
+    
+
+
+
     
     function updateTimer() {
         

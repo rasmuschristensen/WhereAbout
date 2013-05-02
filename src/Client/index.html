@@ -60,7 +60,7 @@
                     </div>
                 </form>
             </div>
-            <div data-role="footer" data-position="fixed" style="text-align: center">
+            <!--<div data-role="footer" data-position="fixed" style="text-align: center">
                 <div class="ui-icon-alt">
                     <fieldset class="ui-grid-b" data-theme="c">
                         <div class="ui-block-a"><a href="#setting-panel" data-role="button" data-icon="plus" data-iconpos="notext" data-inline="true" data-theme="c">Menu</a></div>
@@ -68,39 +68,53 @@
                         <div class="ui-block-b"><a href="#annexPage" id="annex" data-role="button" data-icon="check" data-iconpos="notext" data-inline="true" data-transition="flip" data-theme="c">Annex</a></div>
                     </fieldset>
                 </div>
-            </div>
+            </div>-->
             <!-- Settings panel-->
-            <div data-role="panel" data-display="reveal" id="setting-panel" data-position="left" data-theme="c">
-                <ul>
-                    <li><a href="#" data-role="button" style="text-align: center">
-                            <img src="/images/187-pencil.png">
-                            Add Entry                        
-                        </a></li>
-                    <li>
-                        <a href="#" data-role="button">
-                            <img src="/images/17-bar-chart.png">
-                            Overview                        
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" data-role="button">
-                            <img src="/images/82-dog-paw.png">
-                            Profile                        
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" data-role="button">
-                            <img src="/images/157-wrench.png">
-                            Settings                        
-                        </a>
-                    </li>
-                </ul>
-                <br />
-                <br />
-                <p style="text-align: center">
-                    <strong>Time & Invoice</strong><br />
-                    <small>Version 0.01</small>
-                </p>
+            <!--<div data-role="panel" data-display="reveal" id="setting-panel" data-position="left" data-theme="c">
+                    <ul>
+                        <li><a href="#" data-role="button" style="text-align: center">
+                                <img src="/images/187-pencil.png">
+                                Add Entry                        
+                            </a></li>
+                        <li>
+                            <a href="#" data-role="button">
+                                <img src="/images/17-bar-chart.png">
+                                Overview                        
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-role="button">
+                                <img src="/images/82-dog-paw.png">
+                                Profile                        
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-role="button">
+                                <img src="/images/157-wrench.png">
+                                Settings                        
+                            </a>
+                        </li>
+                    </ul>
+                    <br />
+                    <br />
+                    <p style="text-align: center">
+                        <strong>Time & Invoice</strong><br />
+                        <small>Version 0.01</small>
+                    </p>
+                </div>-->
+            <div id="registrations-panel" data-role="panel" data-display="reveal" data-position="left" ng-init="loadRegistrations()">                
+                <div id="registrations-scroll" data-iscroll>
+                    <div class="iscroll-pulldown">
+                        <span class="iscroll-pull-icon"></span><span class="iscroll-pull-label"></span>
+                    </div>
+                    <ul data-role="listview" class="ui-icon-alt">
+                        <li ng-repeat="registration in registrations">
+                            <a href="#" data-inline="true">
+                                <span>{{registration.Start}}</span>                                
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <!-- Task panel -->
             <div id="task-panel" data-role="panel" data-display="reveal" data-position="right" ng-init="initTask()">

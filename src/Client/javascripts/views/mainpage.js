@@ -21,7 +21,7 @@ $(document).on("pageinit", "#mainPage", function () {
             if (e.type === "swipeleft") {
                 $("#task-panel").panel("open");
             } else if (e.type === "swiperight") {
-                $("#setting-panel").panel("open");
+                $("#registrations-panel").panel("open");
             }
         }
     });
